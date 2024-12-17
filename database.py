@@ -13,4 +13,12 @@ def create_database():
     conn.commit()
     conn.close()
 
+def save_password(service, username, password):
+    conn = sqlite3.connect(db_name)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO passwords (service, username, password) VALUES (?,?,?)", 
+                   (service, username, password))
+    conn.commit()
+    conn.close()
+
 
